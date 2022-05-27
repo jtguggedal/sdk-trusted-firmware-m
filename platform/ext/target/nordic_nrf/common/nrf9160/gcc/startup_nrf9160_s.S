@@ -248,6 +248,11 @@ Reset_Handler:
     ldr     r1, =0xE000ED08 /* SCB->VTOR */
     str     r0, [r1]
 
+    movs    r3, #0
+    msr     BASEPRI, r3
+    msr     PSPLIM, r3
+    msr     MSPLIM, r3
+
     bl      SystemInit
 
 /* Call _start function provided by libraries.
